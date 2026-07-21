@@ -1,0 +1,290 @@
+/* ==========================================================================
+   CSS Variables & Color Palette
+   ========================================================================== */
+:root {
+    --primary-color: #0369a1;    /* Professional deep blue */
+    --secondary-color: #0ea5e9;  /* Vibrant accent blue */
+    --bg-light: #f8fafc;         /* Off-white background */
+    --card-bg: #ffffff;          /* White section background */
+    --text-main: #334155;        /* Soft dark grey for readability */
+    --text-heading: #0f172a;     /* Near-black for headings */
+    --max-width: 900px;
+}
+
+/* ==========================================================================
+   Base Reset & Global Styles
+   ========================================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background-color: var(--bg-light);
+    color: var(--text-main);
+    line-height: 1.6;
+}
+
+/* Hide horizontal rules; we will use CSS padding/margins for spacing */
+hr {
+    display: none;
+}
+
+/* Accessibility: Hide 'Skip to Main Content' link until user focuses on it with Tab */
+a[href="#main-content"] {
+    position: absolute;
+    top: -50px;
+    left: 0;
+    background: var(--primary-color);
+    color: white;
+    padding: 10px;
+    text-decoration: none;
+    transition: top 0.3s;
+    z-index: 100;
+}
+
+a[href="#main-content"]:focus {
+    top: 0;
+}
+
+/* Typography */
+h1, h2, h3 {
+    color: var(--text-heading);
+    margin-bottom: 1rem;
+}
+
+p {
+    margin-bottom: 1rem;
+}
+
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--secondary-color);
+    text-decoration: underline;
+}
+
+/* ==========================================================================
+   Header & Navigation (Flexbox)
+   ========================================================================== */
+header {
+    background-color: var(--card-bg);
+    text-align: center;
+    padding: 3rem 1rem 1.5rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+header p {
+    color: var(--secondary-color);
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+}
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    list-style: none;
+    flex-wrap: wrap;
+}
+
+nav a {
+    font-weight: 500;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 0.5px;
+}
+
+/* ==========================================================================
+   Main Content Layout
+   ========================================================================== */
+main {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 2rem 1rem;
+}
+
+section {
+    background-color: var(--card-bg);
+    padding: 2.5rem;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+}
+
+section h2 {
+    border-bottom: 3px solid var(--secondary-color);
+    padding-bottom: 0.5rem;
+    display: inline-block;
+    margin-bottom: 1.5rem;
+}
+
+/* --- About Section --- */
+#about {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1.5rem;
+}
+
+figure img {
+    border-radius: 50%;
+    border: 4px solid var(--bg-light);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    object-fit: cover;
+}
+
+figcaption {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-main);
+    font-style: italic;
+}
+
+/* --- Skills Section (CSS Grid base) --- */
+dl {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+}
+
+dt {
+    font-weight: bold;
+    color: var(--text-heading);
+    background: var(--bg-light);
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+}
+
+dd {
+    margin-bottom: 0.5rem;
+    padding-left: 1rem;
+}
+
+/* --- Projects Section --- */
+#projects article {
+    background-color: var(--bg-light);
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+    border-left: 4px solid var(--secondary-color);
+}
+
+#projects article:last-child {
+    margin-bottom: 0;
+}
+
+/* --- Contact Form --- */
+form p {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1.2rem;
+}
+
+label {
+    font-weight: 600;
+    margin-bottom: 0.4rem;
+    color: var(--text-heading);
+}
+
+input, textarea {
+    padding: 0.8rem;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    font-family: inherit;
+    font-size: 1rem;
+}
+
+input:focus, textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.2);
+}
+
+button {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: var(--secondary-color);
+}
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+footer {
+    text-align: center;
+    padding: 2rem 1rem;
+    background-color: var(--text-heading);
+    color: var(--bg-light);
+}
+
+/* ==========================================================================
+   Media Queries: Desktop Enhancements (Min-width: 768px)
+   ========================================================================== */
+@media (min-width: 768px) {
+    
+    /* Enhance About Section to side-by-side using Flexbox */
+    #about {
+        flex-direction: row;
+        text-align: left;
+        align-items: flex-start;
+    }
+    
+    #about figure {
+        flex-shrink: 0;
+    }
+
+    /* Enhance Skills list into a 2-column Grid */
+    dl {
+        grid-template-columns: minmax(180px, 1fr) 3fr;
+        align-items: center;
+        gap: 0;
+    }
+
+    dt {
+        margin-bottom: 1rem;
+    }
+
+    dd {
+        margin-bottom: 1rem;
+        padding-left: 0;
+    }
+
+    /* Enhance Projects into a responsive CSS Grid */
+    #projects {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.5rem;
+    }
+
+    #projects h2 {
+        grid-column: 1 / -1; /* Forces heading to span across all grid columns */
+        margin-bottom: 0;
+    }
+
+    #projects article {
+        margin-bottom: 0;
+        height: 100%;
+    }
+}
